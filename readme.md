@@ -2,7 +2,10 @@
 
 #### Helper for parsing posts (comments and groups messages) for links, hashtags, @ mentions and emojis!
 
-Useful for parsing group posts/comments.
+Useful for parsing group posts/comments. Uses
+[iamcal/js-emoji](https://github.com/iamcal/js-emoji) for emoji parsing
+and [twitter-text](https://www.npmjs.org/package/twitter-text) for links,
+@ mentions and hashtags.
 
 # Installation
 
