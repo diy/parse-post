@@ -1,0 +1,27 @@
+{
+  "name": "diy-parse-post",
+  "version": "0.0.0",
+  "description": "Helper for parsing posts (comments and groups messages) for links, hashtags, @ mentions and emojis!",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "browserify test.js | testling -u"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/diy/parse-post"
+  },
+  "author": "Derek Reynolds <drk@diy.org>",
+  "license": "APACHE2",
+  "bugs": {
+    "url": "https://github.com/diy/parse-post/issues"
+  },
+  "homepage": "https://github.com/diy/parse-post",
+  "dependencies": {
+    "twitter-text": "^1.9.0"
+  },
+  "devDependencies": {
+    "tape": "^2.10.2",
+    "testling": "^1.6.1"
+  }
+}
