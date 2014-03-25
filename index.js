@@ -10,3 +10,5 @@ module.exports = function (text, options) {
 
     return text;
 };
+
+module.exports.emoji = require('./lib/vendor/emoji');
