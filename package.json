@@ -18,10 +18,10 @@
   },
   "homepage": "https://github.com/diy/parse-post",
   "dependencies": {
-    "twitter-text": "^1.9.0"
+    "twitter-text": "~1.9.0"
   },
   "devDependencies": {
-    "tape": "^2.10.2",
-    "testling": "^1.6.1"
+    "tape": "~2.10.2",
+    "testling": "~1.6.1"
   }
 }
