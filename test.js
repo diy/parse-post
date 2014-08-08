@@ -4,14 +4,14 @@ var p = require('./');
 var sample = 'Hey :hamburger: diy.org so #chill @drk!';
 
 test('Parse text defaults', function (t) {
-    var wanted = 'Hey <span class="emoji" style="background-image:url(http://d1973c4qjhao9m.cloudfront.net/unicode/1f354.png)" title="hamburger">:hamburger:</span> <a href="http://diy.org" rel="nofollow">diy.org</a> so <a href="/tags/chill">#chill</a> <a href="/drk">@drk</a>!';
+    var wanted = 'Hey <span class="emoji emoji-sizer" style="background-image:url(//d1973c4qjhao9m.cloudfront.net/unicode/1f354.png)" title="hamburger"></span> <a href="http://diy.org" rel="nofollow">diy.org</a> so <a href="/tags/chill">#chill</a> <a href="/drk">@drk</a>!';
 
     t.equal(p(sample), wanted, 'Parsed defaults are chill');
     t.end();
 });
 
 test('Parse text with custom renderHash', function (t) {
-    var wanted = 'Hey <span class="emoji" style="background-image:url(http://d1973c4qjhao9m.cloudfront.net/unicode/1f354.png)" title="hamburger">:hamburger:</span> <a href="http://diy.org" rel="nofollow">diy.org</a> so <a href="https://diy.org/tags/chill">#chill</a> <a href="/drk">@drk</a>!';
+    var wanted = 'Hey <span class="emoji emoji-sizer" style="background-image:url(//d1973c4qjhao9m.cloudfront.net/unicode/1f354.png)" title="hamburger"></span> <a href="http://diy.org" rel="nofollow">diy.org</a> so <a href="https://diy.org/tags/chill">#chill</a> <a href="/drk">@drk</a>!';
 
     var options = {
         renderHash: function (hashtag) {
@@ -24,7 +24,7 @@ test('Parse text with custom renderHash', function (t) {
 });
 
 test('Parse text with custom renderLink', function (t) {
-    var wanted = 'Hey <span class="emoji" style="background-image:url(http://d1973c4qjhao9m.cloudfront.net/unicode/1f354.png)" title="hamburger">:hamburger:</span> <a href="http://test.diy.org" rel="nofollow">test.diy.org</a> so <a href="/tags/chill">#chill</a> <a href="/drk">@drk</a>!';
+    var wanted = 'Hey <span class="emoji emoji-sizer" style="background-image:url(//d1973c4qjhao9m.cloudfront.net/unicode/1f354.png)" title="hamburger"></span> <a href="http://test.diy.org" rel="nofollow">test.diy.org</a> so <a href="/tags/chill">#chill</a> <a href="/drk">@drk</a>!';
 
     var options = {
         renderLink: function (link) {
@@ -40,7 +40,7 @@ test('Parse text with custom renderLink', function (t) {
 });
 
 test('Parse text with custom renderMention', function (t) {
-    var wanted = 'Hey <span class="emoji" style="background-image:url(http://d1973c4qjhao9m.cloudfront.net/unicode/1f354.png)" title="hamburger">:hamburger:</span> <a href="http://diy.org" rel="nofollow">diy.org</a> so <a href="/tags/chill">#chill</a> <a href="https://diy.org/drk">@drk</a>!';
+    var wanted = 'Hey <span class="emoji emoji-sizer" style="background-image:url(//d1973c4qjhao9m.cloudfront.net/unicode/1f354.png)" title="hamburger"></span> <a href="http://diy.org" rel="nofollow">diy.org</a> so <a href="/tags/chill">#chill</a> <a href="https://diy.org/drk">@drk</a>!';
 
     var options = {
         renderMention: function (mention) {
@@ -49,5 +49,15 @@ test('Parse text with custom renderMention', function (t) {
     };
 
     t.equal(p(sample, options), wanted, 'Custom renderLink');
+    t.end();
+});
+
+test('Parse text with newlines', function (t) {
+    var testStr = 'Line1\n\n' + 'Line2\n' + 'Line3';
+    var expected = '<p>Line1</p><p>Line2</p><p>Line3</p>';
+    var result = p(testStr);
+
+    t.equals(result, expected, 'should create 3 paragraphs');
+
     t.end();
 });
